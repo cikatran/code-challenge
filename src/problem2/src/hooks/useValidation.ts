@@ -26,7 +26,11 @@ export const useValidation = () => {
   };
 
   const clearError = (field: keyof ValidationErrors) => {
-    setValidationErrors(prev => ({ ...prev, [field]: undefined }));
+    setValidationErrors(prev => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
 
   const setError = (field: keyof ValidationErrors, message: string) => {
@@ -34,7 +38,7 @@ export const useValidation = () => {
   };
 
   const hasErrors = () => {
-    return Object.keys(validationErrors).length > 0;
+    return Object.values(validationErrors).some(error => !!error);
   };
 
   const hasError = (field: keyof ValidationErrors) => {
