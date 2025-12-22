@@ -34,6 +34,12 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
     setLoaded(false);
   }, [currency]);
 
+  // Get fallback symbol - special case for USD
+  const getFallbackSymbol = (currency: string) => {
+    if (currency.toUpperCase() === 'USD') return '$';
+    return fallback || currency.slice(0, 2).toUpperCase();
+  };
+
   // Show fallback text if image fails to load
   if (error) {
     return (
@@ -52,7 +58,7 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
           color: '#4a5568'
         }}
       >
-        {fallback || currency.slice(0, 2).toUpperCase()}
+        {getFallbackSymbol(currency)}
       </div>
     );
   }
@@ -104,7 +110,7 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
             left: 0
           }}
         >
-          {fallback || currency.slice(0, 2).toUpperCase()}
+          {getFallbackSymbol(currency)}
         </div>
       )}
     </div>
