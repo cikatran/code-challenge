@@ -20,8 +20,8 @@ function App() {
   const [formData, setFormData] = useState<SwapFormData>({
     fromAmount: '',
     toAmount: '',
-    fromCurrency: 'USD',
-    toCurrency: 'BTC'
+    fromCurrency: 'ETH', // Use ETH as default send currency
+    toCurrency: 'USD'
   });
 
   // Fetch exchange rates
@@ -58,7 +58,16 @@ function App() {
 
   // Calculate exchange amount
   const calculateExchange = (amount: string, fromCurrency: string, toCurrency: string) => {
-    if (!amount || !rates[fromCurrency] || !rates[toCurrency]) return '';
+    console.log('calculateExchange called:', { amount, fromCurrency, toCurrency, rates: Object.keys(rates) });
+
+    if (!amount || !rates[fromCurrency] || !rates[toCurrency]) {
+      console.log('calculateExchange failed validation:', {
+        hasAmount: !!amount,
+        hasFromRate: !!rates[fromCurrency],
+        hasToRate: !!rates[toCurrency]
+      });
+      return '';
+    }
 
     const amountNum = parseFloat(amount);
     if (isNaN(amountNum) || amountNum <= 0) return '';
@@ -67,20 +76,20 @@ function App() {
     const toRate = rates[toCurrency];
 
     const exchangedAmount = (amountNum * fromRate) / toRate;
+    console.log('calculateExchange result:', { fromRate, toRate, exchangedAmount });
     return exchangedAmount.toFixed(6);
   };
 
   // Handle input changes
   const handleInputChange = (field: keyof SwapFormData, value: string) => {
-    const newFormData = { ...formData, [field]: value };
-    setFormData(newFormData);
-
     if (field === 'fromAmount') {
-      const calculated = calculateExchange(value, newFormData.fromCurrency, newFormData.toCurrency);
-      setFormData(prev => ({ ...prev, toAmount: calculated }));
+      const calculated = calculateExchange(value, formData.fromCurrency, formData.toCurrency);
+      setFormData(prev => ({ ...prev, fromAmount: value, toAmount: calculated }));
     } else if (field === 'toAmount') {
-      const calculated = calculateExchange(value, newFormData.toCurrency, newFormData.fromCurrency);
-      setFormData(prev => ({ ...prev, fromAmount: calculated }));
+      const calculated = calculateExchange(value, formData.toCurrency, formData.fromCurrency);
+      setFormData(prev => ({ ...prev, toAmount: value, fromAmount: calculated }));
+    } else {
+      setFormData(prev => ({ ...prev, [field]: value }));
     }
   };
 
@@ -109,7 +118,7 @@ function App() {
   
   // Get available currencies
   const availableCurrencies = Object.keys(rates).sort((a, b) => {
-    const priority = { 'USD': 0, 'BTC': 1, 'ETH': 2 };
+    const priority = { 'ETH': 0, 'USD': 1, 'WBTC': 2 };
     return ((priority[a as keyof typeof priority] ?? 999) - (priority[b as keyof typeof priority] ?? 999)) || a.localeCompare(b);
   });
 
@@ -123,14 +132,7 @@ function App() {
   console.log('Form data:', formData);
   console.log('Current exchange rate:', currentExchangeRate);
 
-  // Recalculate when rates change or currency changes
-  useEffect(() => {
-    if (rates[formData.fromCurrency] && rates[formData.toCurrency] && formData.fromAmount) {
-      const calculated = calculateExchange(formData.fromAmount, formData.fromCurrency, formData.toCurrency);
-      setFormData(prev => ({ ...prev, toAmount: calculated }));
-    }
-  }, [rates, formData.fromCurrency, formData.toCurrency]);
-
+  
   return (
     <div className="app">
       <div className="container">
