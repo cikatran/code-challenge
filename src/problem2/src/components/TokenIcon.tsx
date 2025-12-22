@@ -1,12 +1,6 @@
 import React from 'react';
 import { getTokenIcon } from '../utils/tokenIcons';
-
-interface TokenIconProps {
-  currency: string;
-  size?: number;
-  className?: string;
-  fallback?: string;
-}
+import type { TokenIconProps } from '../types';
 
 export const TokenIcon: React.FC<TokenIconProps> = ({
   currency,
