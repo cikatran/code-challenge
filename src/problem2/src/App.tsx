@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { TokenIcon } from './components/TokenIcon';
 import './App.css';
 
 interface ExchangeRates {
@@ -167,17 +168,23 @@ function App() {
                 <div className="form-group">
                   <label>You send</label>
                   <div className="currency-input-group">
-                    <select
-                      value={formData.fromCurrency}
-                      onChange={(e) => handleCurrencyChange('fromCurrency', e.target.value)}
-                      className="currency-select"
-                    >
-                      {availableCurrencies.map(currency => (
-                        <option key={currency} value={currency}>
-                          {currency}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="custom-select-wrapper">
+                      <div className="selected-currency">
+                        <TokenIcon currency={formData.fromCurrency} size={20} />
+                        <span>{formData.fromCurrency}</span>
+                      </div>
+                      <select
+                        value={formData.fromCurrency}
+                        onChange={(e) => handleCurrencyChange('fromCurrency', e.target.value)}
+                        className="currency-select-with-icon"
+                      >
+                        {availableCurrencies.map(currency => (
+                          <option key={currency} value={currency}>
+                            {currency}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                     <input
                       type="text"
                       value={formData.fromAmount}
@@ -204,17 +211,23 @@ function App() {
                 <div className="form-group">
                   <label>You receive</label>
                   <div className="currency-input-group">
-                    <select
-                      value={formData.toCurrency}
-                      onChange={(e) => handleCurrencyChange('toCurrency', e.target.value)}
-                      className="currency-select"
-                    >
-                      {availableCurrencies.map(currency => (
-                        <option key={currency} value={currency}>
-                          {currency}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="custom-select-wrapper">
+                      <div className="selected-currency">
+                        <TokenIcon currency={formData.toCurrency} size={20} />
+                        <span>{formData.toCurrency}</span>
+                      </div>
+                      <select
+                        value={formData.toCurrency}
+                        onChange={(e) => handleCurrencyChange('toCurrency', e.target.value)}
+                        className="currency-select-with-icon"
+                      >
+                        {availableCurrencies.map(currency => (
+                          <option key={currency} value={currency}>
+                            {currency}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                     <input
                       type="text"
                       value={formData.toAmount}
@@ -229,8 +242,14 @@ function App() {
                 {/* Exchange Rate Info */}
                 {currentExchangeRate && (
                   <div className="exchange-rate-info">
-                    <span>1 {formData.fromCurrency} = {currentExchangeRate} {formData.toCurrency}</span>
-                    <span>1 {formData.toCurrency} = {(1 / parseFloat(currentExchangeRate)).toFixed(6)} {formData.fromCurrency}</span>
+                    <span>
+                      <TokenIcon currency={formData.fromCurrency} size={16} />
+                      <span>1 {formData.fromCurrency} = {currentExchangeRate} {formData.toCurrency}</span>
+                    </span>
+                    <span>
+                      <TokenIcon currency={formData.toCurrency} size={16} />
+                      <span>1 {formData.toCurrency} = {(1 / parseFloat(currentExchangeRate)).toFixed(6)} {formData.fromCurrency}</span>
+                    </span>
                   </div>
                 )}
 
