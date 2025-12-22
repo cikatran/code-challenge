@@ -58,14 +58,29 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
   }
 
   return (
-    <>
+    <div
+      className="token-icon-container"
+      style={{
+        width: size,
+        height: size,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        flexShrink: 0
+      }}
+    >
       <img
         src={iconUrl}
         alt={`${currency} icon`}
         width={size}
         height={size}
         className={`token-icon ${className}`}
-        style={{ display: loaded ? 'block' : 'none' }}
+        style={{
+          display: loaded ? 'block' : 'none',
+          borderRadius: '50%',
+          objectFit: 'cover'
+        }}
         onError={handleImageError}
         onLoad={handleImageLoad}
       />
@@ -81,14 +96,17 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
             justifyContent: 'center',
             backgroundColor: '#e2e8f0',
             borderRadius: '50%',
-            fontSize: size * 0.5,
+            fontSize: Math.max(8, size * 0.4),
             fontWeight: 'bold',
-            color: '#4a5568'
+            color: '#4a5568',
+            position: 'absolute',
+            top: 0,
+            left: 0
           }}
         >
           {fallback || currency.slice(0, 2).toUpperCase()}
         </div>
       )}
-    </>
+    </div>
   );
 };
