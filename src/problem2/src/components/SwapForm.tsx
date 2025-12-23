@@ -39,7 +39,7 @@ export const SwapForm: React.FC<SwapFormProps> = ({
     <form onSubmit={onSubmit}>
       {/* From Currency */}
       <CurrencyInput
-        label="You send"
+        label="From"
         value={formData.fromAmount}
         onAmountChange={(value) => onAmountChange('fromAmount', value)}
         onCurrencyChange={(currency) => onCurrencyChange('fromCurrency', currency)}
@@ -62,7 +62,7 @@ export const SwapForm: React.FC<SwapFormProps> = ({
 
       {/* To Currency */}
       <CurrencyInput
-        label="You receive"
+        label="To"
         value={formData.toAmount}
         onAmountChange={(value) => onAmountChange('toAmount', value)}
         onCurrencyChange={(currency) => onCurrencyChange('toCurrency', currency)}

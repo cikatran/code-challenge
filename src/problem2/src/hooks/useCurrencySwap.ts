@@ -31,8 +31,10 @@ export const useCurrencySwap = () => {
     const fromRate = rates[fromCurrency];
     const toRate = rates[toCurrency];
 
-    const exchangedAmount = (amountNum * fromRate) / toRate;
-    console.log('calculateExchange result:', { fromRate, toRate, exchangedAmount });
+    // Convert FROM currency to USD, then USD to TO currency
+    const amountInUSD = amountNum * fromRate;
+    const exchangedAmount = amountInUSD / toRate;
+    console.log('calculateExchange result:', { fromRate, toRate, amountInUSD, exchangedAmount });
     return exchangedAmount.toFixed(6);
   }, []);
 
@@ -82,11 +84,15 @@ export const useCurrencySwap = () => {
     }));
   }, []);
 
-  // Calculate current exchange rate
+  // Calculate current exchange rate (how much TO currency you get for 1 FROM unit)
   const getCurrentExchangeRate = useCallback((rates: ExchangeRates) => {
-    return rates[formData.fromCurrency] && rates[formData.toCurrency]
-      ? (rates[formData.toCurrency] / rates[formData.fromCurrency]).toFixed(6)
-      : null;
+    if (!rates[formData.fromCurrency] || !rates[formData.toCurrency]) {
+      return null;
+    }
+    // Since all rates are in USD, convert FROM to USD, then USD to TO
+    // Rate = (fromCurrency price in USD) / (toCurrency price in USD)
+    const rate = rates[formData.fromCurrency] / rates[formData.toCurrency];
+    return rate.toFixed(6);
   }, [formData.fromCurrency, formData.toCurrency]);
 
   return {
