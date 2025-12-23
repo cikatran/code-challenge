@@ -1,8 +1,8 @@
 .currency-input-group {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--spacing-md);
   align-items: flex-start;
-  min-height: 3.25rem;
+  min-height: var(--input-height);
   margin: 0 auto;
   max-width: 400px;
 }
@@ -11,34 +11,34 @@
 .custom-select-wrapper {
   flex: 0 0 160px;
   position: relative;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  background: white;
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-input);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-fast);
   min-width: 160px;
-  height: 3.25rem;
+  height: var(--input-height);
   display: flex;
   align-items: center;
 }
 
 .custom-select-wrapper:hover {
-  border-color: #cbd5e0;
+  border-color: var(--color-border-hover);
 }
 
 .custom-select-wrapper:focus-within {
-  border-color: #3182ce;
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
 }
 
 .selected-currency {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  color: #1a202c;
-  font-weight: 500;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  font-size: var(--font-size-md);
+  color: var(--color-input-text);
+  font-weight: var(--font-weight-medium);
   white-space: nowrap;
   flex: 1;
 }
@@ -53,9 +53,9 @@
   cursor: pointer;
   border: none;
   background: transparent;
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   color: transparent;
-  z-index: 2;
+  z-index: var(--z-dropdown);
 }
 
 .currency-select-with-icon:focus {
@@ -63,60 +63,60 @@
 }
 
 .currency-select-with-icon:focus-visible {
-  outline: 2px solid #3182ce;
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
 .custom-select-wrapper::after {
   content: '▼';
-  font-size: 0.7rem;
+  font-size: var(--font-size-xs);
   position: absolute;
-  right: 1rem;
+  right: var(--spacing-lg);
   top: 50%;
   transform: translateY(-50%);
-  color: #718096;
+  color: var(--color-text-secondary);
   pointer-events: none;
 }
 
 .amount-input {
   flex: 1;
-  padding: 0.75rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 1.125rem;
-  font-weight: 500;
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
   text-align: right;
-  background: white;
-  color: #1a202c;
-  transition: border-color 0.2s ease;
-  height: 3.25rem;
+  background: var(--color-bg-input);
+  color: var(--color-input-text);
+  transition: border-color var(--transition-fast);
+  height: var(--input-height);
   box-sizing: border-box;
 }
 
 .amount-input:focus {
   outline: none;
-  border-color: #3182ce;
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
 }
 
 .amount-input::placeholder {
-  color: #a0aec0;
+  color: var(--color-text-placeholder);
 }
 
 .amount-input::-webkit-input-placeholder {
-  color: #a0aec0;
+  color: var(--color-text-placeholder);
 }
 
 .amount-input::-moz-placeholder {
-  color: #a0aec0;
+  color: var(--color-text-placeholder);
 }
 
 .amount-input:-ms-input-placeholder {
-  color: #a0aec0;
+  color: var(--color-text-placeholder);
 }
 
 .amount-input:read-only {
-  background: #f7fafc;
+  background: var(--color-bg-input-readonly);
   cursor: default;
 }
 
@@ -126,11 +126,11 @@
 }
 
 .error-message {
-  color: #feb2b2;
-  font-size: 0.75rem;
-  font-weight: 500;
+  color: var(--color-bg-error);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
   line-height: 1.2;
-  margin-top: 0.25rem;
+  margin-top: var(--spacing-xs);
   position: absolute;
   bottom: -0.8rem;
   left: 0;
@@ -138,11 +138,11 @@
 }
 
 .amount-input.error {
-  border-color: #fc8181 !important;
+  border-color: var(--color-border-error) !important;
   background-color: rgba(254, 178, 178, 0.05) !important;
 }
 
 .amount-input.error:focus {
-  border-color: #f56565 !important;
-  box-shadow: 0 0 0 2px rgba(245, 101, 101, 0.2) !important;
+  border-color: var(--color-border-error-dark) !important;
+  box-shadow: var(--shadow-error) !important;
 }

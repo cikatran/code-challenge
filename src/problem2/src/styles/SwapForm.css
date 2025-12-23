@@ -1,55 +1,55 @@
 .swap-form {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: var(--color-bg-form);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
   width: 100%;
   max-width: 520px;
   min-width: 320px;
 }
 
 .swap-form h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a202c;
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-input-text);
+  margin-bottom: var(--spacing-sm);
   text-align: center;
 }
 
 .subtitle {
-  color: #718096;
-  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
   text-align: center;
-  margin-bottom: 2rem !important;
+  margin-bottom: var(--spacing-2xl) !important;
 }
 
 .loading, .error {
-  padding: 1rem;
-  border-radius: 8px;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-sm);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-lg);
 }
 
 .loading {
-  background: #edf2f7;
-  color: #4a5568;
+  background: var(--color-bg-loading);
+  color: var(--color-text-tertiary);
 }
 
 .error {
-  background: #feb2b2;
-  color: #742a2a;
+  background: var(--color-bg-error);
+  color: var(--color-text-error);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 .form-group label {
   display: block;
-  font-weight: 500;
-  color: #2d3748;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
   text-align: left;
 }
 
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1.5rem 0;
+  margin: var(--spacing-xl) 0;
   position: relative;
 }
 
@@ -66,17 +66,17 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #f7fafc;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  color: #4a5568;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-exchange-rate);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
 }
 
 .exchange-rate-info span {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }

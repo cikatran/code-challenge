@@ -2,6 +2,7 @@ import React from 'react';
 import { SwapForm, LoadingState, ErrorState } from './components';
 import { useExchangeRates } from './hooks/useExchangeRates';
 import { useCurrencySwap } from './hooks/useCurrencySwap';
+import './styles/theme.css';
 import './styles/base.css';
 import './styles/SwapForm.css';
 import './styles/CurrencyInput.css';

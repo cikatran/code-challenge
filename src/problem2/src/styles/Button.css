@@ -1,18 +1,18 @@
 .swap-button {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  width: var(--button-swap-size);
+  height: var(--button-swap-size);
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary-start) 0%, var(--color-primary-end) 100%);
+  color: var(--color-text-inverse);
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: var(--swap-arrow-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-base);
 }
 
 .swap-button:hover:not(:disabled) {
@@ -31,31 +31,31 @@
 
 .confirm-button {
   width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary-start) 0%, var(--color-primary-end) 100%);
+  color: var(--color-text-inverse);
   border: none;
-  border-radius: 8px;
-  font-size: 1.125rem;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
-  margin-top: 1rem;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-xl);
+  margin-top: var(--spacing-lg);
 }
 
 .confirm-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-2xl);
 }
 
 .confirm-button:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-xl);
 }
 
 .confirm-button:disabled {
-  background: #cbd5e0;
+  background: var(--color-border-hover);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
