@@ -1,15 +1,15 @@
 .swap-form {
   background: var(--color-bg-form);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-lg);
   box-shadow: var(--shadow-lg);
-  width: 100%;
+  width: 80%;
   max-width: 520px;
   min-width: 320px;
 }
 
 .swap-form h2 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   color: var(--color-input-text);
   margin-bottom: var(--spacing-sm);
@@ -23,7 +23,8 @@
   margin-bottom: var(--spacing-2xl) !important;
 }
 
-.loading, .error {
+.loading,
+.error {
   padding: var(--spacing-lg);
   border-radius: var(--radius-sm);
   text-align: center;
@@ -41,7 +42,10 @@
 }
 
 .form-group {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-group label {
@@ -51,13 +55,14 @@
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-sm);
   text-align: left;
+  width: 100%;
 }
 
 .swap-separator {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: var(--spacing-xl) 0;
+  margin: var(--spacing-sm) 0;
   position: relative;
 }
 
@@ -67,8 +72,8 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--spacing-lg);
-  margin: var(--spacing-xl) 0;
-  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
   background: var(--color-bg-exchange-rate);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
