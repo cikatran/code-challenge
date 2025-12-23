@@ -1,0 +1,177 @@
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .swap-form {
+    padding: 1.5rem;
+    max-width: 100%;
+    min-width: unset;
+  }
+
+  .currency-input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .custom-select-wrapper {
+    flex: none;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .selected-currency {
+    padding-right: 2rem;
+  }
+
+  .exchange-rate-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header p {
+    font-size: 0.95rem;
+  }
+
+  .swap-form {
+    padding: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .amount-input {
+    font-size: 1rem;
+  }
+
+  .confirm-button {
+    font-size: 1rem;
+    padding: 0.875rem;
+  }
+}
+
+/* Extra small screens (320px) */
+@media (max-width: 320px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .swap-form {
+    padding: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .currency-input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .custom-select-wrapper {
+    flex: 1;
+    min-width: 100%;
+  }
+
+  .amount-input {
+    flex: 1;
+    min-width: 100%;
+    font-size: 1rem;
+  }
+
+  .selected-currency {
+    font-size: 0.9rem;
+  }
+
+  .currency-select-with-icon {
+    padding-right: 1.5rem;
+  }
+
+  .swap-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .exchange-rate-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-size: 0.8rem;
+  }
+
+  .confirm-button {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Large screens optimization */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+  }
+
+  .swap-form {
+    max-width: 800px;
+  }
+
+  .custom-select-wrapper {
+    flex: 0 0 180px;
+    min-width: 180px;
+  }
+
+  .selected-currency {
+    font-size: 1.1rem;
+  }
+
+  .amount-input {
+    font-size: 1.25rem;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1000px;
+  }
+
+  .swap-form {
+    max-width: 1000px;
+  }
+}
