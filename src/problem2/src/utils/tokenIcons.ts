@@ -1,54 +1,31 @@
 // Token icon mapping for supported currencies
 // Based on Switcheo token-icons repository: https://github.com/Switcheo/token-icons/tree/main/tokens
 
-export const TOKEN_ICONS: Record<string, string> = {
+const BASE_URL = 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/';
+
+// List of supported token symbols (token names in the repository)
+const SUPPORTED_TOKENS = [
   // Popular cryptocurrencies
-  'BTC': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/BTC.svg',
-  'ETH': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ETH.svg',
-  'USDC': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/USDC.svg',
-  'USDT': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/USDT.svg',
-  'WBTC': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/WBTC.svg',
-  'WETH': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/WETH.svg',
+  'BTC', 'ETH', 'USDC', 'USDT', 'WBTC', 'WETH',
 
   // Stablecoins
-  'BUSD': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/BUSD.svg',
-  'USC': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/USC.svg',
-  'YIELDUSD': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/YIELDUSD.svg',
+  'BUSD', 'USC', 'YIELDUSD',
 
   // DeFi tokens
-  'ATOM': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ATOM.svg',
-  'OSMO': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/OSMO.svg',
-  'LUNA': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/LUNA.svg',
-  'STOSMO': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/STOSMO.svg',
-  'STLUNA': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/STLUNA.svg',
-  'RATOM': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/RATOM.svg',
-  'STATOM': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/STATOM.svg',
-  'STEVMOS': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/STEVMOS.svg',
-  'EVMOS': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/EVMOS.svg',
-  'IRIS': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/IRIS.svg',
-  'KUJI': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/KUJI.svg',
-  'STRD': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/STRD.svg',
+  'ATOM', 'OSMO', 'LUNA', 'STOSMO', 'STLUNA', 'RATOM', 'STATOM', 'STEVMOS',
+  'EVMOS', 'IRIS', 'KUJI', 'STRD',
 
   // Other tokens
-  'BLUR': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/BLUR.svg',
-  'GMX': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/GMX.svg',
-  'OKB': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/OKB.svg',
-  'OKT': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/OKT.svg',
-  'SWTH': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/SWTH.svg',
-  'ZIL': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ZIL.svg',
-  'AXLUSDC': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/AXLUSDC.svg',
-  'WSTETH': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/WSTETH.svg',
+  'BLUR', 'GMX', 'OKB', 'OKT', 'SWTH', 'ZIL', 'AXLUSDC', 'WSTETH',
 
   // Special tokens
-  'bNEO': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/bNEO.svg',
-  'BNEO': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/bNEO.svg',
-  'LSI': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/LSI.svg',
-  'IBCX': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/IBCX.svg',
-  'ampLUNA': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ampLUNA.svg',
-  'AMPLUNA': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ampLUNA.svg',
+  'bNEO', 'LSI', 'IBCX', 'ampLUNA',
+] as const;
 
-  // Default icon for unsupported currencies
-  'DEFAULT': 'https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/generic.svg'
+// Token aliases (for case variations or alternative names)
+const TOKEN_ALIASES: Record<string, string> = {
+  'BNEO': 'bNEO',
+  'AMPLUNA': 'ampLUNA',
 };
 
 /**
@@ -58,5 +35,15 @@ export const TOKEN_ICONS: Record<string, string> = {
  */
 export const getTokenIcon = (currency: string): string => {
   const upperCurrency = currency.toUpperCase();
-  return TOKEN_ICONS[upperCurrency] || TOKEN_ICONS.DEFAULT;
+
+  // Check if there's an alias for this currency
+  const tokenName = TOKEN_ALIASES[upperCurrency] || upperCurrency;
+
+  // Check if the token is supported
+  if (SUPPORTED_TOKENS.includes(tokenName as typeof SUPPORTED_TOKENS[number])) {
+    return `${BASE_URL}${tokenName}.svg`;
+  }
+
+  // Return default icon for unsupported currencies
+  return `${BASE_URL}generic.svg`;
 };
